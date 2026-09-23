@@ -676,6 +676,10 @@ h3 {
   transform: rotate(14deg);
 }
 
+.process-course-link {
+  margin-top: 1.75rem;
+}
+
 .process-list {
   list-style: none;
   margin: 0;

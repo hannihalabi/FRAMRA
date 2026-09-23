@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import foundersPhoto from "@/public/Kevin-Jack-Sitter.png";
 import logo from "@/public/logo-transparent.png";
@@ -164,6 +165,9 @@ export default function Home() {
             <div className="process-title">
               <p className="eyebrow light-eyebrow">{content.processIntro.label}</p>
               <h2>{content.processIntro.title}</h2>
+              <Link className="button button-lime process-course-link" href="/saljkurs">
+                Starta säljkursen <ArrowIcon />
+              </Link>
               <div className="process-doodle" aria-hidden="true">→</div>
             </div>
 
@@ -235,6 +239,7 @@ export default function Home() {
           <nav aria-label="Sidfotsmeny">
             <a href="#tjanster">Erbjudande</a>
             <a href="#sa-fungerar-det">Så fungerar det</a>
+            <Link href="/saljkurs">Säljkurs</Link>
             <a href="#om">Om oss</a>
             <a href="#kontakt">Kontakt</a>
           </nav>

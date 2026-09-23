@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import logo from "@/public/logo-transparent.png";
 
@@ -74,6 +75,7 @@ export function SiteHeader({ companyName }: SiteHeaderProps) {
       <nav aria-label="Huvudmeny">
         <a href="#tjanster">Erbjudande</a>
         <a href="#sa-fungerar-det">Så fungerar det</a>
+        <Link href="/saljkurs">Säljkurs</Link>
         <a href="#om">Om oss</a>
         <a href="#faq">FAQ</a>
       </nav>
