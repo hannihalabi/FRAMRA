@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { SiteHeader } from "@/components/site-header";
+import foundersPhoto from "@/public/Kevin-Jack-Sitter.png";
 import logo from "@/public/logo-transparent.png";
 import { siteContent as content } from "@/lib/site-content";
 
@@ -36,28 +38,7 @@ export default function Home() {
         Hoppa till innehållet
       </a>
 
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label={`${content.companyName}, startsida`}>
-          <Image
-            className="brand-logo"
-            src={logo}
-            alt="Framra"
-            sizes="(max-width: 430px) 120px, 150px"
-            priority
-          />
-        </a>
-
-        <nav aria-label="Huvudmeny">
-          <a href="#tjanster">Erbjudande</a>
-          <a href="#sa-fungerar-det">Så fungerar det</a>
-          <a href="#om">Om oss</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-
-        <a className="button button-small button-dark header-cta" href="#kontakt">
-          Kontakta oss <ArrowIcon />
-        </a>
-      </header>
+      <SiteHeader companyName={content.companyName} />
 
       <main id="main">
         <section className="hero" id="top">
@@ -112,6 +93,30 @@ export default function Home() {
           </div>
         </div>
 
+        <section className="story section-shell" id="om">
+          <div className="story-image-wrap">
+            <Image
+              className="story-image"
+              src={foundersPhoto}
+              alt="Framras två grundare sitter bredvid varandra i mörka kostymer."
+              sizes="(max-width: 719px) calc(100vw - 2rem), 50vw"
+              placeholder="blur"
+            />
+            <span className="story-caption">Grundarna bakom Framra</span>
+          </div>
+
+          <div className="story-copy">
+            <h2>{content.about.title}</h2>
+            <p>{content.about.body}</p>
+            <p>{content.about.bodySecondary}</p>
+            <ul className="story-values">
+              {content.about.facts.map((fact) => (
+                <li key={fact}><span aria-hidden="true">✓</span>{fact}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section className="intro section-shell">
           <p className="eyebrow dark-eyebrow">{content.intro.label}</p>
           <div className="intro-grid">
@@ -128,16 +133,17 @@ export default function Home() {
         <section className="services section-shell" id="tjanster">
           <div className="section-heading">
             <div>
-              <p className="eyebrow dark-eyebrow">Vårt erbjudande</p>
-              <h2>Tre sätt att<br />skapa värde.</h2>
+              <p className="eyebrow dark-eyebrow">{content.servicesIntro.label}</p>
+              <h2>{content.servicesIntro.title}</h2>
             </div>
-            <p>
-              Ersätt korten nedan med företagets viktigaste verifierade tjänster,
-              produkter eller kundfördelar.
-            </p>
+            <p>{content.servicesIntro.description}</p>
           </div>
 
-          <div className="service-grid">
+          <div
+            className="service-grid"
+            tabIndex={0}
+            aria-label="Brandsäkerhetsprodukter. Svep horisontellt för att se fler."
+          >
             {content.services.map((service) => (
               <article className={`service-card ${service.color}`} key={service.number}>
                 <div className="service-topline">
@@ -156,8 +162,8 @@ export default function Home() {
         <section className="process" id="sa-fungerar-det">
           <div className="section-shell process-inner">
             <div className="process-title">
-              <p className="eyebrow light-eyebrow">Så fungerar det</p>
-              <h2>Från första hej<br />till nästa steg.</h2>
+              <p className="eyebrow light-eyebrow">{content.processIntro.label}</p>
+              <h2>{content.processIntro.title}</h2>
               <div className="process-doodle" aria-hidden="true">→</div>
             </div>
 
@@ -175,34 +181,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="about section-shell" id="om">
-          <div className="about-art" aria-hidden="true">
-            <div className="about-circle">
-              <span>VI<br />ÄR</span>
-              <SparkIcon />
-            </div>
-            <div className="about-sticker">[ER<br />KÄRNA]</div>
-            <div className="about-lines">≋≋≋</div>
-          </div>
-          <div className="about-copy">
-            <p className="eyebrow dark-eyebrow">{content.about.eyebrow}</p>
-            <h2>{content.about.title}</h2>
-            <p>{content.about.body}</p>
-            <ul className="fact-list">
-              {content.about.facts.map((fact) => (
-                <li key={fact}><span aria-hidden="true">✓</span>{fact}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
         <section className="faq section-shell" id="faq">
           <div className="faq-heading">
             <p className="eyebrow dark-eyebrow">Vanliga frågor</p>
             <h2>Bra att veta.</h2>
             <p>
-              Svaren nedan är tydliga platshållare tills verifierad information
-              om företaget finns på plats.
+              Här hittar du svar på vanliga frågor om jobbet, försäljningen och
+              hur du tjänar pengar hos Framra.
             </p>
           </div>
           <div className="faq-list">
@@ -246,7 +231,7 @@ export default function Home() {
               sizes="150px"
             />
           </a>
-          <p>[En kort, verifierad beskrivning av företaget.]</p>
+          <p>Direktförsäljning med fokus på brandsäkerhet för privatpersoner.</p>
           <nav aria-label="Sidfotsmeny">
             <a href="#tjanster">Erbjudande</a>
             <a href="#sa-fungerar-det">Så fungerar det</a>

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Framra",
   },
   description:
-    "Ett kul och utvecklande extrajobb fullt av nya möten. Skicka in ditt CV till Framra.",
+    "Framra erbjuder extrajobb inom direktförsäljning av brandsäkerhetsprodukter för privatpersoner.",
 };
 
 export const viewport: Viewport = {

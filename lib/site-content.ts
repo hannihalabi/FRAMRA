@@ -9,84 +9,107 @@ export const siteContent = {
     titleAccent: "extrajobb.",
     titleEnd: "Börjar här.",
     description:
-      "Vill du ha ett extrajobb som är kul, utvecklande och fullt av nya möten? Skicka in ditt CV och berätta lite om dig själv.",
+      "Vill du ha ett kul extrajobb där du lär dig försäljning från grunden och själv kan påverka vad du tjänar? Hos Framra möter du kunder ute på fältet och hjälper privatpersoner att stärka brandsäkerheten hemma.",
     primaryCta: "Skicka in ditt CV här",
     secondaryCta: "Läs mer om oss",
-    artLabel: "Ditt nästa extraknäck",
+    artLabel: "Ditt nästa extrajobb",
     artWordLead: "Extra",
     artWordEnd: "kul!",
     artNoteLead: "Enkelt",
     artNoteEnd: "att ansöka",
   },
   intro: {
-    label: "Kort om erbjudandet",
-    title: "Vad ni gör. Vem ni hjälper.",
-    body: "[Förklara med 2–3 meningar vilka kunder företaget hjälper och vilket konkret värde de får. Håll texten saklig och verifierbar.]",
+    label: "Vad Framra gör",
+    title: "Direktförsäljning med fokus på brandsäkerhet.",
+    body: "Framra är ett säljbolag som arbetar med direktförsäljning. Vårt största fokus ligger på brandsäkerhet för privatpersoner, och försäljningen sker ute på fältet där våra säljare möter kunder direkt vid dörren.",
+  },
+  servicesIntro: {
+    label: "Vad vi säljer",
+    title: "Brandsäkerhet för hemmet.",
+    description:
+      "Vi erbjuder produkter och färdiga paket som hjälper privatpersoner att bygga upp ett brandskydd i hemmet.",
   },
   services: [
     {
       number: "01",
-      title: "[Tjänst eller produkt 1]",
-      description:
-        "[Beskriv vad som ingår, vem erbjudandet passar och vilket behov det möter.]",
+      title: "Brandsläckare",
+      description: "Brandsläckare för privatpersoner och användning i hemmet.",
       color: "purple",
     },
     {
       number: "02",
-      title: "[Tjänst eller produkt 2]",
-      description:
-        "[Beskriv vad som ingår, vem erbjudandet passar och vilket behov det möter.]",
+      title: "Brandfiltar",
+      description: "Brandfiltar som en del av hemmets brandskydd.",
       color: "yellow",
     },
     {
       number: "03",
-      title: "[Tjänst eller produkt 3]",
-      description:
-        "[Beskriv vad som ingår, vem erbjudandet passar och vilket behov det möter.]",
+      title: "Brandvarnare",
+      description: "Brandvarnare framtagna för privatpersoners hem.",
       color: "coral",
     },
+    {
+      number: "04",
+      title: "Färdiga paket",
+      description:
+        "Paket som samlar flera av våra brandsäkerhetsprodukter.",
+      color: "lime",
+    },
   ],
+  processIntro: {
+    label: "Så fungerar jobbet",
+    title: "Lär dig sälja. Påverka din lön.",
+  },
   process: [
     {
       number: "1",
-      title: "Berätta vad ni behöver",
+      title: "Lär dig från grunden",
       description:
-        "[Ange hur första kontakten går till och vilken information kunden bör skicka med.]",
+        "Du behöver inte ha arbetat med försäljning tidigare. Du får lära dig grunderna och får löpande coachning för att utvecklas.",
     },
     {
       number: "2",
-      title: "Få ett tydligt nästa steg",
+      title: "Möt kunder på fältet",
       description:
-        "[Beskriv hur företaget återkopplar, bedömer behovet eller presenterar ett förslag.]",
+        "Försäljningen sker genom personliga möten med privatpersoner direkt vid dörren.",
     },
     {
       number: "3",
-      title: "Sätt igång",
+      title: "Påverka vad du tjänar",
       description:
-        "[Beskriv kort hur leveransen, bokningen eller samarbetet startar.]",
+        "Du får provision på det du säljer. Fler affärer, bättre försäljning och mer tid syns direkt i din lön.",
     },
   ],
   about: {
-    eyebrow: "Om [Företagsnamn]",
-    title: "[En verifierad rubrik om företaget.]",
-    body: "[Berätta kort om företagets bakgrund, arbetssätt och relevanta kompetens. Lägg endast till årtal, certifieringar och meriter som går att verifiera.]",
-    facts: ["[Relevant faktauppgift 1]", "[Relevant faktauppgift 2]"],
+    title: "Vi ville göra extrajobb roligare.",
+    body: "Framra startades med en tydlig vision: att skapa enkla extrajobb för personer som vill stärka sin ekonomi – utan att jobbet behöver kännas krångligt eller tråkigt.",
+    bodySecondary: "För oss handlar det om mer än att tjäna extra pengar. Vi vill bygga en gemenskap där man utvecklas, har kul tillsammans och får chansen att vara med om aktiviteter och upplevelser, som resor utomlands.",
+    facts: [
+      "Enkelt att komma igång",
+      "Extra pengar på ett roligare sätt",
+      "Gemenskap, aktiviteter och upplevelser",
+    ],
   },
   faq: [
     {
-      question: "Vilka uppdrag kan ni hjälpa till med?",
+      question: "Behöver jag ha arbetat med försäljning tidigare?",
       answer:
-        "[Lista de typer av uppdrag eller behov som företaget faktiskt erbjuder hjälp med.]",
+        "Nej. Du får lära dig försäljning från grunden och får löpande coachning. Det viktiga är att du är beredd att lära dig och lägga ner arbetet.",
     },
     {
-      question: "Hur börjar vi?",
+      question: "Hur tjänar jag pengar hos Framra?",
       answer:
-        "[Beskriv den verifierade kontakt- eller bokningsprocessen och normal återkopplingstid om den är känd.]",
+        "Ersättningen är provisionsbaserad. Det innebär att du själv kan påverka vad du tjänar genom hur mycket du säljer, hur många affärer du gör och hur mycket tid du lägger in.",
     },
     {
-      question: "Var finns ni?",
+      question: "Vad säljer jag?",
       answer:
-        "[Ange ort, serviceområde eller om tjänsten erbjuds digitalt. Lägg bara till en fysisk adress om den är verifierad.]",
+        "Du säljer brandsläckare, brandfiltar, brandvarnare och färdiga paket med flera brandsäkerhetsprodukter.",
+    },
+    {
+      question: "Var sker försäljningen?",
+      answer:
+        "Försäljningen sker ute på fältet där du träffar privatpersoner direkt vid dörren.",
     },
   ],
   contact: {
