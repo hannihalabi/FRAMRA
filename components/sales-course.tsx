@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { courseSteps } from "@/lib/course-content";
 import { examQuestions } from "@/lib/course-exam";
 import foundersPhoto from "@/public/Jack-solo.png";
@@ -10,6 +10,18 @@ import styles from "@/app/saljkurs/course.module.css";
 
 type CourseScreen = "intro" | "contents" | "lesson" | "exam-intro" | "exam" | "result";
 type ExamAnswer = number | null;
+
+const CONFETTI_BITS = [
+  [-330, -245], [-285, -315], [-235, -205], [-190, -350], [-145, -265], [-100, -325],
+  [-55, -220], [-10, -355], [35, -270], [80, -330], [125, -220], [170, -350],
+  [215, -260], [260, -320], [310, -230], [355, -155], [300, -105], [245, -165],
+  [190, -95], [135, -155], [80, -75], [25, -145], [-30, -80], [-85, -155],
+  [-140, -75], [-195, -145], [-250, -65], [-310, -125], [-355, -25], [-300, 35],
+  [-245, 100], [-190, 25], [-135, 135], [-80, 55], [-25, 145], [30, 65],
+  [85, 155], [140, 45], [195, 135], [250, 55], [305, 145], [355, 75],
+  [330, 205], [270, 275], [210, 195], [150, 315], [90, 225], [30, 350],
+  [-30, 245], [-90, 335], [-150, 220], [-210, 310], [-270, 200], [-330, 270],
+] as const;
 
 const shuffleAnswers = () =>
   examQuestions.map((question) => {
@@ -114,15 +126,6 @@ export function SalesCourse() {
         Hoppa till kursen
       </a>
 
-      <header className={styles.header}>
-        <Link href="/" aria-label="Framra, till startsidan" className={styles.brand}>
-          <span>Framra</span>
-        </Link>
-        <Link className={styles.contactLink} href="/#kontakt">
-          Kontakta oss
-        </Link>
-      </header>
-
       <main id="course-main" ref={mainRef}>
         {screen === "intro" ? (
           <section className={`${styles.screen} ${styles.introScreen}`}>
@@ -141,7 +144,11 @@ export function SalesCourse() {
                 <span><b aria-hidden="true">◷</b> Ca 45 min</span>
                 <span><b aria-hidden="true">✦</b> Slutprov</span>
               </div>
-              <button className={styles.primaryButton} onClick={() => goTo("contents")} type="button">
+              <button
+                className={styles.primaryButton}
+                onClick={() => goTo("contents")}
+                type="button"
+              >
                 Starta kursen <Arrow />
               </button>
             </div>
@@ -208,6 +215,8 @@ export function SalesCourse() {
                 <span style={{ width: `${((lessonIndex + 1) / courseSteps.length) * 100}%` }} />
               </div>
             </div>
+            <div className={styles.lessonLayout}>
+              <div className={styles.lessonMainColumn}>
             <article className={styles.lessonBody} key={step.id}>
               <p className={styles.eyebrow}>Del {String(lessonIndex + 1).padStart(2, "0")}</p>
               <h1>{step.title}<em>.</em></h1>
@@ -275,6 +284,31 @@ export function SalesCourse() {
                 {lessonIndex === courseSteps.length - 1 ? "Gå till slutprovet" : "Nästa"} <Arrow />
               </button>
             </div>
+              </div>
+              <aside className={styles.lessonSideNav} aria-label="Navigering mellan kursmomenten">
+                <p className={styles.sideNavTitle}>FRAMRA-metoden</p>
+                <div className={styles.sideNavTrack}>
+                  <ol>
+                    {courseSteps.map((courseStep, index) => (
+                      <li key={courseStep.id}>
+                        <button
+                          aria-current={lessonIndex === index ? "step" : undefined}
+                          className={lessonIndex === index ? styles.sideNavActive : ""}
+                          onClick={() => openLesson(index)}
+                          type="button"
+                        >
+                          <span>{index + 1}</span>
+                          <strong>{courseStep.title}</strong>
+                        </button>
+                      </li>
+                    ))}
+                  </ol>
+                  <button className={styles.sideNavExam} onClick={() => goTo("exam-intro")} type="button">
+                    <span>✦</span><strong>Slutprov →</strong><small>25 frågor</small>
+                  </button>
+                </div>
+              </aside>
+            </div>
           </section>
         ) : null}
 
@@ -306,6 +340,22 @@ export function SalesCourse() {
 
         {screen === "exam" ? (
           <section className={`${styles.screen} ${styles.examScreen}`}>
+            {isAnswered && selectedOriginalAnswer === question.correctIndex ? (
+              <div className={styles.confettiLayer} aria-hidden="true">
+                {CONFETTI_BITS.map(([x, y], index) => (
+                  <span
+                    className={styles.confettiBit}
+                    key={`${questionIndex}-${index}`}
+                    style={{
+                      "--confetti-x": `${x}px`,
+                      "--confetti-y": `${y}px`,
+                      "--confetti-delay": `${(index % 7) * 18}ms`,
+                      "--confetti-rotation": `${(index % 5) * 144 + 360}deg`,
+                    } as CSSProperties}
+                  />
+                ))}
+              </div>
+            ) : null}
             <div className={styles.examTopline}>
               <button className={styles.backButton} onClick={() => goTo("exam-intro")} type="button" aria-label="Tillbaka till provstart">←</button>
               <div className={styles.examProgressCopy}>Fråga {questionIndex + 1} / {examQuestions.length}</div>
