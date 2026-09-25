@@ -8,20 +8,13 @@ import logo from "@/public/logo-transparent.png";
 const DIRECTION_THRESHOLD = 6;
 const TOP_THRESHOLD = 24;
 
-function ArrowIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 20 20" width="20" height="20">
-      <path d="M4 10h11M11 5l5 5-5 5" />
-    </svg>
-  );
-}
-
 type SiteHeaderProps = {
   companyName: string;
 };
 
 export function SiteHeader({ companyName }: SiteHeaderProps) {
   const [isHidden, setIsHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -60,8 +53,10 @@ export function SiteHeader({ companyName }: SiteHeaderProps) {
     };
   }, []);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
-    <header className={`site-header${isHidden ? " is-hidden" : ""}`}>
+    <header className={`site-header${isHidden && !isMenuOpen ? " is-hidden" : ""}`}>
       <a className="brand" href="#top" aria-label={`${companyName}, startsida`}>
         <Image
           className="brand-logo"
@@ -72,17 +67,28 @@ export function SiteHeader({ companyName }: SiteHeaderProps) {
         />
       </a>
 
-      <nav aria-label="Huvudmeny">
-        <a href="#tjanster">Erbjudande</a>
-        <a href="#sa-fungerar-det">Så fungerar det</a>
-        <Link href="/saljkurs">Säljkurs</Link>
-        <a href="#om">Om oss</a>
-        <a href="#faq">FAQ</a>
+      <nav aria-label="Huvudmeny" className={isMenuOpen ? "is-open" : ""} id="primary-navigation">
+        <a href="#tjanster" onClick={closeMenu}>Erbjudande</a>
+        <a href="#sa-fungerar-det" onClick={closeMenu}>Så fungerar det</a>
+        <Link href="/saljkurs" onClick={closeMenu}>Säljkurs</Link>
+        <a href="#om" onClick={closeMenu}>Om oss</a>
+        <a href="#faq" onClick={closeMenu}>FAQ</a>
+        <a href="#kontakt" onClick={closeMenu}>Kontakt</a>
       </nav>
 
-      <a className="button button-small button-dark header-cta" href="#kontakt">
-        Kontakta oss <ArrowIcon />
-      </a>
+      <button
+        aria-controls="primary-navigation"
+        aria-expanded={isMenuOpen}
+        aria-label={isMenuOpen ? "Stäng menyn" : "Öppna menyn"}
+        className="menu-toggle"
+        onClick={() => setIsMenuOpen((open) => !open)}
+        type="button"
+      >
+        <span className="menu-toggle-icon" aria-hidden="true">
+          <span />
+          <span />
+        </span>
+      </button>
     </header>
   );
 }
