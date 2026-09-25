@@ -1289,6 +1289,12 @@
     width: 100vw;
     white-space: nowrap;
     scrollbar-width: none;
+    transition: transform 240ms ease;
+    will-change: transform;
+  }
+
+  .lessonSideNavHidden {
+    transform: translateY(calc(-100% - 1px));
   }
 
   .lessonSideNav::-webkit-scrollbar {

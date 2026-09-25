@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { courseSteps } from "@/lib/course-content";
 import { examQuestions } from "@/lib/course-exam";
 import foundersPhoto from "@/public/Jack-solo.png";
@@ -54,7 +54,31 @@ export function SalesCourse() {
   );
   const [choice, setChoice] = useState<number | null>(null);
   const [passedDate, setPassedDate] = useState("");
+  const [stepNavHidden, setStepNavHidden] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (screen !== "lesson" || !window.matchMedia("(max-width: 760px)").matches) return;
+
+    let previousScrollY = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const distance = currentScrollY - previousScrollY;
+
+      if (currentScrollY < 100) {
+        setStepNavHidden(false);
+      } else if (distance > 5) {
+        setStepNavHidden(true);
+      } else if (distance < -5) {
+        setStepNavHidden(false);
+      }
+
+      previousScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [screen]);
 
   const step = courseSteps[lessonIndex];
   const question = examQuestions[questionIndex];
@@ -84,6 +108,7 @@ export function SalesCourse() {
 
   const openLesson = (index: number) => {
     setLessonIndex(index);
+    setStepNavHidden(false);
     goTo("lesson");
   };
 
@@ -285,7 +310,7 @@ export function SalesCourse() {
               </button>
             </div>
               </div>
-              <aside className={styles.lessonSideNav} aria-label="Navigering mellan kursmomenten">
+              <aside className={`${styles.lessonSideNav} ${stepNavHidden ? styles.lessonSideNavHidden : ""}`} aria-label="Navigering mellan kursmomenten">
                 <p className={styles.sideNavTitle}>FRAMRA-metoden</p>
                 <div className={styles.sideNavTrack}>
                   <ol>

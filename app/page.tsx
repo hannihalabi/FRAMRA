@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
+import smokeAlarmProduct from "@/public/brandvarnare-landningssida-converted.png";
+import fireBlanketProduct from "@/public/brandfilt-landningssida.png";
+import extinguisherProducts from "@/public/Brandslackare-landningssida.png";
 import foundersPhoto from "@/public/Kevin-Jack-Sitter.png";
 import logo from "@/public/logo-transparent.png";
 import { siteContent as content } from "@/lib/site-content";
@@ -88,9 +91,14 @@ export default function Home() {
 
         <div className="ticker" aria-label="Våra ledord">
           <div>
-            <span>TYDLIGT</span><i>✦</i><span>PERSONLIGT</span><i>✦</i>
-            <span>GENOMTÄNKT</span><i>✦</i><span>FRAMÅT</span><i>✦</i>
-            <span>TYDLIGT</span><i>✦</i><span>PERSONLIGT</span>
+            <div className="ticker-group">
+              <span>EXTRAJOBB</span><i>✦</i><span>GEMENSKAP</span><i>✦</i>
+              <span>UTVECKLING</span><i>✦</i><span>ÄVENTYR</span><i>✦</i>
+            </div>
+            <div className="ticker-group" aria-hidden="true">
+              <span>EXTRAJOBB</span><i>✦</i><span>GEMENSKAP</span><i>✦</i>
+              <span>UTVECKLING</span><i>✦</i><span>ÄVENTYR</span><i>✦</i>
+            </div>
           </div>
         </div>
 
@@ -151,6 +159,56 @@ export default function Home() {
                   <span>{service.number}</span>
                   <span aria-hidden="true">↗</span>
                 </div>
+                {service.title === "Brandsläckare" || service.title === "Brandfiltar" || service.title === "Brandvarnare" ? (
+                  <div className="service-product-image-frame">
+                    <Image
+                      className="service-product-image"
+                      src={service.title === "Brandsläckare"
+                        ? extinguisherProducts
+                        : service.title === "Brandfiltar"
+                          ? fireBlanketProduct
+                          : smokeAlarmProduct}
+                      alt={service.title === "Brandsläckare"
+                        ? "Fem brandsläckare i olika färger och utföranden."
+                        : service.title === "Brandfiltar"
+                          ? "Brandfilt för hemmets brandskydd."
+                          : "Brandvarnare för hemmets brandsäkerhet."}
+                      sizes="(max-width: 719px) 76vw, 320px"
+                    />
+                  </div>
+                ) : null}
+                {service.title === "Färdiga paket" ? (
+                  <div
+                    className="service-package-collage"
+                    role="group"
+                    aria-label="Ett paket med brandsläckare, brandfilt och brandvarnare."
+                  >
+                    <div className="service-package-item service-package-extinguisher">
+                      <Image
+                        src={extinguisherProducts}
+                        alt="Brandsläckare i flera färger."
+                        fill
+                        sizes="(max-width: 719px) 36vw, 150px"
+                      />
+                    </div>
+                    <div className="service-package-item service-package-blanket">
+                      <Image
+                        src={fireBlanketProduct}
+                        alt="Brandfiltar för hemmet."
+                        fill
+                        sizes="(max-width: 719px) 36vw, 150px"
+                      />
+                    </div>
+                    <div className="service-package-item service-package-alarm">
+                      <Image
+                        src={smokeAlarmProduct}
+                        alt="Brandvarnare för hemmet."
+                        fill
+                        sizes="(max-width: 719px) 36vw, 150px"
+                      />
+                    </div>
+                  </div>
+                ) : null}
                 <div>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
