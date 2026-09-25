@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { courseSteps } from "@/lib/course-content";
 import { examQuestions } from "@/lib/course-exam";
-import foundersPhoto from "@/public/Jack-solo.png";
+import packageExtinguisher from "@/public/Brandslackare-landningssida.png";
+import packageBlanket from "@/public/brandfilt-landningssida.png";
+import packageAlarm from "@/public/brandvarnare-landningssida-converted.png";
 import styles from "@/app/saljkurs/course.module.css";
 
 type CourseScreen = "intro" | "contents" | "lesson" | "exam-intro" | "exam" | "result";
@@ -170,7 +172,7 @@ export function SalesCourse() {
                 <span><b aria-hidden="true">✦</b> Slutprov</span>
               </div>
               <button
-                className={styles.primaryButton}
+                className={`${styles.primaryButton} ${styles.introStartButton}`}
                 onClick={() => goTo("contents")}
                 type="button"
               >
@@ -178,14 +180,17 @@ export function SalesCourse() {
               </button>
             </div>
             <div className={styles.introArt}>
-              <Image
-                src={foundersPhoto}
-                alt="Jack, en av personerna bakom FRAMRA"
-                priority
-                sizes="(max-width: 760px) 70vw, 440px"
-              />
-              <span className={styles.artTag}>FRAMRA • Säljmetod</span>
-              <span className={styles.sparkle} aria-hidden="true">✦</span>
+              <div className={styles.packageCollage} role="group" aria-label="Brandsäkerhetspaket med brandsläckare, brandfilt och brandvarnare">
+                <div className={`${styles.packageTile} ${styles.packageExtinguisher}`}>
+                  <Image src={packageExtinguisher} alt="Brandsläckare i flera färger" fill priority sizes="(max-width: 760px) 62vw, 300px" />
+                </div>
+                <div className={`${styles.packageTile} ${styles.packageBlanket}`}>
+                  <Image src={packageBlanket} alt="Brandfiltar för hemmet" fill sizes="(max-width: 760px) 62vw, 300px" />
+                </div>
+                <div className={`${styles.packageTile} ${styles.packageAlarm}`}>
+                  <Image src={packageAlarm} alt="Brandvarnare för hemmet" fill sizes="(max-width: 760px) 62vw, 300px" />
+                </div>
+              </div>
             </div>
             <span className={styles.screenDecoration} aria-hidden="true" />
           </section>

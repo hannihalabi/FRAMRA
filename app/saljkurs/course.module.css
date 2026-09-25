@@ -138,27 +138,75 @@
 
 .introArt {
   align-self: end;
-  background: var(--paper);
+  aspect-ratio: 4 / 3;
+  background: var(--lime);
   border: 2px solid var(--ink);
-  border-radius: 1.35rem;
+  border-radius: 1rem;
   box-shadow: 10px 11px 0 var(--ink);
   justify-self: center;
   margin: 0 0 0.7rem;
-  max-height: 540px;
+  max-height: none;
   max-width: 440px;
   overflow: hidden;
   position: relative;
-  transform: rotate(2deg);
+  transform: rotate(0deg);
   width: 100%;
+  height: auto;
   z-index: 1;
 }
 
-.introArt img {
+.introArt > img {
   display: block;
   height: min(60svh, 510px);
   object-fit: cover;
   object-position: center 25%;
   width: 100%;
+}
+
+.packageCollage {
+  background: var(--lime);
+  inset: 0;
+  position: absolute;
+}
+
+.packageTile {
+  background: white;
+  border: 1px solid rgba(22, 21, 34, 0.12);
+  border-radius: 1rem;
+  box-shadow: 0 0.7rem 1.4rem rgba(22, 21, 34, 0.2);
+  height: 61%;
+  overflow: hidden;
+  position: absolute;
+  width: 90%;
+}
+
+.packageTile img {
+  object-fit: contain;
+}
+
+.packageExtinguisher {
+  left: 4%;
+  top: 20%;
+  transform: rotate(-4deg);
+  z-index: 1;
+}
+
+.packageBlanket {
+  height: 73%;
+  left: 29%;
+  top: 13%;
+  transform: rotate(0deg);
+  width: 45%;
+  z-index: 3;
+}
+
+.packageAlarm {
+  height: 61%;
+  right: 4%;
+  top: 20%;
+  transform: rotate(4deg);
+  width: 48%;
+  z-index: 2;
 }
 
 .artTag {
@@ -1199,6 +1247,12 @@
     padding-top: 2.2rem;
   }
 
+  .introStartButton {
+    display: flex;
+    margin-inline: auto;
+    width: fit-content;
+  }
+
   .screen h1 {
     font-size: clamp(3rem, 12vw, 4.4rem);
   }
@@ -1206,11 +1260,7 @@
   .introArt {
     justify-self: start;
     margin-left: 0.3rem;
-    max-width: min(68vw, 300px);
-  }
-
-  .introArt img {
-    height: clamp(220px, 54vw, 330px);
+    max-width: min(84vw, 380px);
   }
 
   .sparkle {
