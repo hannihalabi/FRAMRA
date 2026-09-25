@@ -15,12 +15,27 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://framra.vercel.app"),
   title: {
-    default: "Framra — Ditt nästa extrajobb börjar här",
+    default: "Tjäna extra. Ha kul på vägen. | FRAMRA",
     template: "%s | Framra",
   },
   description:
-    "Framra erbjuder extrajobb inom direktförsäljning av brandsäkerhetsprodukter för privatpersoner.",
+    "Sugen på ett extrajobb som ger mer än bara lön? Lär dig sälja från grunden, träffa nya människor och utvecklas med FRAMRA. Du får provision och kan själv påverka vad du tjänar.",
+  openGraph: {
+    type: "website",
+    locale: "sv_SE",
+    siteName: "FRAMRA",
+    title: "Tjäna extra. Ha kul på vägen. | FRAMRA",
+    description:
+      "Lär dig försäljning från grunden, träffa nya människor och utvecklas med FRAMRA. Ett extrajobb där du får provision och kan påverka vad du tjänar.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tjäna extra. Ha kul på vägen. | FRAMRA",
+    description:
+      "Lär dig sälja från grunden, träffa nya människor och ha kul med teamet. Sök extrajobb hos FRAMRA.",
+  },
 };
 
 export const viewport: Viewport = {

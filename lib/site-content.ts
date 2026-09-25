@@ -5,11 +5,11 @@
 export const siteContent = {
   companyName: "Framra",
   hero: {
-    titleLead: "Ditt nästa",
-    titleAccent: "extrajobb.",
-    titleEnd: "Börjar här.",
+    titleLead: "Tjäna extra?",
+    titleAccent: "Ha kul.",
+    titleEnd: "Sök till FRAMRA.",
     description:
-      "Vill du ha ett kul extrajobb där du lär dig försäljning från grunden och själv kan påverka vad du tjänar? Hos Framra möter du kunder ute på fältet och hjälper privatpersoner att stärka brandsäkerheten hemma.",
+      "Lär dig försäljning från grunden, träffa nya människor och ha kul med teamet. Du får provision och kan själv påverka vad du tjänar. Ingen erfarenhet? Inga problem – du får coachning längs vägen.",
     primaryCta: "Skicka in ditt CV här",
     secondaryCta: "Läs mer om oss",
     artLabel: "Ditt nästa extrajobb",
