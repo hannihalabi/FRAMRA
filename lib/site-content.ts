@@ -5,9 +5,9 @@
 export const siteContent = {
   companyName: "Framra",
   hero: {
-    titleLead: "Tjäna extra?",
-    titleAccent: "Ha kul.",
-    titleEnd: "Sök till FRAMRA.",
+    titleLead: "Ditt nästa",
+    titleAccent: "extrajobb.",
+    titleEnd: "Börjar här.",
     description:
       "Lär dig försäljning från grunden, träffa nya människor och ha kul med teamet. Du får provision och kan själv påverka vad du tjänar. Ingen erfarenhet? Inga problem – du får coachning längs vägen.",
     primaryCta: "Skicka in ditt CV här",
